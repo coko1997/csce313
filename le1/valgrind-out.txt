@@ -1,0 +1,118 @@
+==12046== Memcheck, a memory error detector
+==12046== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==12046== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==12046== Command: ./buggy
+==12046== Parent PID: 10142
+==12046== 
+--12046-- 
+--12046-- Valgrind options:
+--12046--    --leak-check=full
+--12046--    --show-leak-kinds=all
+--12046--    --track-origins=yes
+--12046--    --verbose
+--12046--    --log-file=valgrind-out.txt
+--12046-- Contents of /proc/version:
+--12046--   Linux version 5.10.16.3-microsoft-standard-WSL2 (oe-user@oe-host) (x86_64-msft-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 SMP Fri Apr 2 22:23:49 UTC 2021
+--12046-- 
+--12046-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--12046-- Page sizes: currently 4096, max supported 4096
+--12046-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--12046-- Reading syms from /home/chase/csce313/lab-exercise-1-environment-setup-chasemalbright/buggy
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--12046--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--12046--   .. build-id is valid
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--12046--    object doesn't have a symbol table
+--12046--    object doesn't have a dynamic symbol table
+--12046-- Scheduler: using generic scheduler lock implementation.
+--12046-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==12046== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-12046-by-chase-on-???
+==12046== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-12046-by-chase-on-???
+==12046== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-12046-by-chase-on-???
+==12046== 
+==12046== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==12046== don't want to do, unless you know exactly what you're doing,
+==12046== or are doing some strange experiment):
+==12046==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=12046 ...command...
+==12046== 
+==12046== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==12046==   /path/to/gdb ./buggy
+==12046== and then give GDB the following command
+==12046==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=12046
+==12046== --pid is optional if only one valgrind process is running
+==12046== 
+--12046-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--12046-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--12046--    object doesn't have a symbol table
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--12046--    object doesn't have a symbol table
+==12046== WARNING: new redirection conflicts with existing -- ignoring it
+--12046--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--12046--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--12046-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--12046-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/libasan.so.5.0.0
+--12046--    object doesn't have a symbol table
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+--12046--    object doesn't have a symbol table
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/libubsan.so.1.0.0
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+--12046--    object doesn't have a symbol table
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--12046--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--12046--   .. build-id is valid
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+--12046--   Considering /usr/lib/debug/.build-id/c0/f40155b3f8bf8c494fa800f9ab197ebe20ed6e.debug ..
+--12046--   .. build-id is valid
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/librt-2.31.so
+--12046--   Considering /usr/lib/debug/.build-id/ce/016c975d94bc4770ed8c62d45dea6b71405a2c.debug ..
+--12046--   .. build-id is valid
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+--12046--   Considering /usr/lib/debug/.build-id/7b/4536f41cdaa5888408e82d0836e33dcf436466.debug ..
+--12046--   .. build-id is valid
+--12046-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--12046--   Considering /usr/lib/debug/.build-id/fe/91b4090ea04c1559ff71dd9290062776618891.debug ..
+--12046--   .. build-id is valid
+--12046-- REDIR: 0x5e8f480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f7b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e0a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e7e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e90c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5eabce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5eab820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f5e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5eab7e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e1d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5eacf50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5eab860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8e630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e97bb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f3d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5eab930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8eae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f6f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e90c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x5e8f8a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--12046-- REDIR: 0x49606f0 (libasan.so.5:free) redirected to 0x483c9d0 (free)
+==12046== 
+==12046== HEAP SUMMARY:
+==12046==     in use at exit: 0 bytes in 0 blocks
+==12046==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==12046== 
+==12046== All heap blocks were freed -- no leaks are possible
+==12046== 
+==12046== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
